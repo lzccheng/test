@@ -2,14 +2,17 @@
 	<div class="box">
 		<router-link tag='div' v-for='(i,index) in nav' :to='i.url' class="foot" :key='index'>
 			<div @click='onNavColor(index)'>
-				<p :class='{color:index==navIndex}'><i :class="i.class"></i></p>
-				<p :class='{color:index==navIndex}'><span>{{i.name}}</span></p>
+				<p :class='{color:index==$store.state.navIndex}'><i :class="i.class"></i></p>
+				<p :class='{color:index==$store.state.navIndex}'><span>{{i.name}}</span></p>
 			</div>
 		</router-link>
 	</div>
 </template>
 <script>
 	export default {
+		mounted:function(){
+			console.log(this.$store.state.navIndex)
+		},
 		data(){
 			return {
 				navIndex: 0, 
@@ -26,7 +29,7 @@
 					},
 					{
 						name:'团队会议',
-						class:'fa fa-group',
+						class:'fa fa-comments-o',
 						url: '/huiyi'
 					},
 					{
@@ -38,16 +41,14 @@
 						name:'我的',
 						class:'fa fa-user',
 						url: '/my'
-					},
-
-
+					}
 				]
 			}
 		},
 		methods:{
 			onNavColor:function(i){
-				// console.log(i)
-				this.navIndex = i
+				console.log(this.$store.state.navIndex)
+				this.$store.commit(`newNavIndex`,i)
 			}
 		}
 	}

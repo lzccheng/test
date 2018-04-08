@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/page/index/index'
+import index from '@/page/index/index'
+import test from '@/page/index/test'
 import jiudian from '@/page/jiudian/jiudian'
 import huiyi from '@/page/huiyi/huiyi'
 import ruzhu from '@/page/ruzhu/ruzhu'
@@ -13,8 +14,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'index',
+      component: test
     },
     {
       path: '/jiudian',
